@@ -1,0 +1,23 @@
+pulsar_root: /mnt/pulsar
+pulsar_pycurl_ssl_library: openssl
+pulsar_create_user: true
+pulsar_user: {name: pulsar, shell: /bin/bash}
+pulsar_optional_dependencies:
+  - pyOpenSSL
+  - pycurl
+  - drmaa
+  - kombu
+  - 'amqp==5.0.2'
+  - psutil
+amqp_publish_retry: True
+amqp_publish_retry_max_retries: 5
+amqp_publish_retry_interval_start: 10
+amqp_publish_retry_interval_step: 10
+amqp_publish_retry_interval_max: 60
+managers:
+  _default_:
+    type: queued_drmaa
+pulsar_yaml_config:
+  conda_auto_init: false
+  conda_auto_install: false
+  min_polling_interval: 0.5

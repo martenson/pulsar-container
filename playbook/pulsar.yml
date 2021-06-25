@@ -1,0 +1,14 @@
+- hosts: localhost
+  connection: local
+  become: true
+  pre_tasks:
+    - name: Install dependencies
+      package:
+        name:
+          - git
+          - virtualenv
+          - python3
+  vars_files:
+    - group_vars/pulsarservers.yml
+  roles:
+    - galaxyproject.pulsar
