@@ -5,6 +5,7 @@ apt -y install software-properties-common && \
 add-apt-repository --yes --update ppa:ansible/ansible && \
 apt -y install ansible && \
 apt -y install curl && \
+apt -y install strace && \
 apt -y install libgnutls28-dev build-essential gcc python3-dev libcurl4-openssl-dev libssl-dev
 
 # Run Ansible playbook to install Pulsar
