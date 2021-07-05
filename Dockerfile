@@ -5,8 +5,10 @@ apt -y install software-properties-common && \
 add-apt-repository --yes --update ppa:ansible/ansible && \
 apt -y install ansible && \
 apt -y install curl && \
-apt -y install strace gdb iputils-ping && \
 apt -y install libgnutls28-dev build-essential gcc python3-dev libcurl4-openssl-dev libssl-dev
+
+# debug stuff separate to increase build speed
+RUN apt -y install strace gdb iputils-ping dnsutils
 
 # Run Ansible playbook to install Pulsar
 ADD playbook /playbook
@@ -31,6 +33,8 @@ RUN rm /libpbspro_19.0.0-25_amd64.deb /pbspro-client_19.0.0-25_amd64.deb
 ADD common_cleanup.sh /usr/bin/common_cleanup.sh
 RUN chmod +x /usr/bin/common_cleanup.sh && \
 sh /usr/bin/common_cleanup.sh
+
+
 
 ADD init.sh /init.sh
 RUN chmod +x /init.sh
