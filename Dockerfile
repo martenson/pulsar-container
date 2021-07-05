@@ -22,6 +22,7 @@ RUN apt -y install libtcl8.6 libtk8.6
 RUN dpkg -i /libpbspro_19.0.0-25_amd64.deb
 RUN dpkg -i /pbspro-client_19.0.0-25_amd64.deb
 RUN sed -i 's/CHANGE_THIS_TO_PBS_PRO_SERVER_HOSTNAME/elixir-pbs.elixir-czech.cz/' /etc/pbs.conf
+RUN echo 'PBS_AUTH_METHOD=GSS' >> /etc/pbs.conf
 
 # Cleanup the system to reduce the image size
 RUN apt -y remove build-essential gcc python3-dev libgnutls28-dev
